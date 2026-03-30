@@ -4,7 +4,7 @@
 # Compiler: xc8-cc
 #----------------------------------------------
 
-PROJECT = doppelblitz
+PROJECT = lauflicht
 TARGET = 18F45K20
 
 #----------------------------------------------

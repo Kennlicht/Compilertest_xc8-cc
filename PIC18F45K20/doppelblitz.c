@@ -41,14 +41,14 @@ void main(void)
 
   while(1)
   {
-      LATDbits.LATD7 = 1;     // LED ein
-      __delay_ms(70);         // für 70 ms
-      LATDbits.LATD7 = 0;     // LED aus
-      __delay_ms(70);         // für 70 ms
-      LATDbits.LATD7 = 1;     // LED ein
-      __delay_ms(70);         // für 70 ms
-      LATDbits.LATD7 = 0;     // LED aus
-      __delay_ms(790);        // für den Rest von 1000 ms, also 790 ms
+    LATDbits.LATD7 = 1;     // LED ein
+    __delay_ms(70);         // für 70 ms
+    LATDbits.LATD7 = 0;     // LED aus
+    __delay_ms(70);         // für 70 ms
+    LATDbits.LATD7 = 1;     // LED ein
+    __delay_ms(70);         // für 70 ms
+    LATDbits.LATD7 = 0;     // LED aus
+    __delay_ms(790);        // für den Rest von 1000 ms, also 790 ms
   }
 }
 

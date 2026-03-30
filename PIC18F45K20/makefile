@@ -11,7 +11,7 @@ TARGET = 18F45K20
 # Paths
 #----------------------------------------------
 XC8_DIR = "C:\DevTools\Microchip\xc8\v3.10\bin"
-DFP_DIR = c:/DevTools/Microchip/packs/PIC18F-K_DFP/1.15.303
+DFP_DIR = "c:/DevTools/Microchip/packs/PIC18F-K_DFP/1.15.303/xc8"
 
 #----------------------------------------------
 # Tools
@@ -31,8 +31,8 @@ LIBPATH =
 #----------------------------------------------
 # Options
 #----------------------------------------------
-CFLAGS = -mcpu=$(TARGET) -mdfp="$(DFP_DIR)/xc8" -Wa,-a -O2 -msummary=+psect,-class,+mem,-hex,-file
-LFLAGS =
+CFLAGS = -O2 -std=c99 -Wpedantic
+LFLAGS = -Wa,-a -msummary=+psect,-class,+mem,-hex,-file
 RFLAGS =
 
 # ignore all make-internal rules
@@ -58,17 +58,17 @@ clean-all: clean
 #----------------------------------------------
 # Pattern rules
 #----------------------------------------------
-#
+# compile
+%.p1 : %.c
+	$(CC) -mcpu=$(TARGET) -mdfp=$(DFP_DIR) $(CFLAGS) -c $< -o$@
+
+# link
+%.hex : %.p1
+	$(CC) -mcpu=$(TARGET) -mdfp=$(DFP_DIR) $(LFLAGS) -o$(PROJECT).hex $<
+
+# compile + link
 %.hex : %.c
-	$(CC) $(CFLAGS) -o$(PROJECT).hex $<
-
-# relocatable assembler
-#%.out : %.c
-#	@$(CC) -a$@ -Act12+7+10 -ed -ew $(CFLAGS) -r $<
-
-# absolute assembler
-#%.asm : %.c
-#	@$(CC) -a$@ -AtJ12+7+14 -ed -ew $(CFLAGS) $<
+	$(CC) -mcpu=$(TARGET) -mdfp=$(DFP_DIR) $(CFLAGS) $(LFLAGS) -o$(PROJECT).hex $<
 
 #----------------------------------------------
 # Explicit rules

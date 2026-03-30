@@ -5,7 +5,6 @@
 
 // xc8-cc -mcpu=18F45K20
 //        -mdfp="c:/DevTools/Microchip/packs/PIC18F-K_DFP/1.15.303/xc8"
-//        -Wa,-a           --> *.lst erzeugen
 //        doppelblitz.c
 //
 
@@ -43,13 +42,13 @@ void main(void)
   while(1)
   {
       LATDbits.LATD7 = 1;     // LED ein
-      __delay_ms(70);         // für 70 ms
+      __delay_ms(70);         // fÃ¼r 70 ms
       LATDbits.LATD7 = 0;     // LED aus
-      __delay_ms(70);         // für 70 ms
+      __delay_ms(70);         // fÃ¼r 70 ms
       LATDbits.LATD7 = 1;     // LED ein
-      __delay_ms(70);         // für 70 ms
+      __delay_ms(70);         // fÃ¼r 70 ms
       LATDbits.LATD7 = 0;     // LED aus
-      __delay_ms(790);        // für den Rest von 1000 ms, also 790 ms
+      __delay_ms(790);        // fÃ¼r den Rest von 1000 ms, also 790 ms
   }
 }
 
